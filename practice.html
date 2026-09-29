@@ -33,6 +33,15 @@
         //on_finish: function () {
         //    jsPsych.data.displayData();
         //}
+        extensions: [
+            {
+                type: jsPsychExtensionPipe,
+                params: {
+                    experiment_id: "2sMeAfZtKgxo",
+                    filename: () => `${subject_id}.csv`
+                }
+            }
+        ]
     });
 
     
@@ -214,13 +223,13 @@
     };
 
     
-    const save_data = {
-        type: jsPsychPipe,
-        action: "save",
-        experiment_id: "iqgCEKzYqfq6",
-        filename: filename,
-        data_string: ()=>jsPsych.data.get().json()
-    };
+    // const save_data = {
+    //     type: jsPsychPipe,
+    //     action: "save",
+    //     experiment_id: "iqgCEKzYqfq6",
+    //     filename: filename,
+    //     data_string: ()=>jsPsych.data.get().json()
+    // };
 
     var cvstest = {
         type: jsPsychCanvasButtonResponse,
