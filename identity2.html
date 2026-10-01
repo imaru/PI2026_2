@@ -10,7 +10,7 @@
     <script src="https://unpkg.com/@jspsych/plugin-canvas-button-response@2.1.0"></script>
     <script src="https://unpkg.com/@jspsych/plugin-canvas-keyboard-response@2.1.0"></script>
     <script src="https://unpkg.com/@jspsych/plugin-image-button-response@2.1.0"></script>
-    <script src="https://unpkg.com/@jspsych-contrib/plugin-pipe"></script>
+    <script src="https://unpkg.com/@jspsych/extension-pipe@0.2.0"></script>
     <script src="https://unpkg.com/@jspsych/plugin-preload@2.1.0"></script>
     <link href="https://unpkg.com/jspsych@8.2.1/css/jspsych.css" rel="stylesheet" type="text/css" />
     <style>
@@ -33,6 +33,15 @@
         //on_finish: function () {
         //    jsPsych.data.displayData();
         //}
+        extensions: [
+            {
+                type: jsPsychExtensionPipe,
+                params: {
+                    experiment_id: "2sMeAfZtKgxo",
+                    filename: () => `${subject_id}.csv`
+                }
+            }
+        ]
     });
 
     
