@@ -29,6 +29,14 @@
     var wid=500;
     var hgt=100;
     /* initialize jsPsych */
+    var subnum = {
+        type: jsPsychSurveyText,
+        button_label: "0次へ",
+        questions: [
+        {prompt: '学籍番号を入力してください'}
+        ]
+    };
+    // var fname = subnum + '_p.json';
     var jsPsych = initJsPsych({
         override_safe_mode: true,
         //on_finish: function () {
@@ -40,21 +48,21 @@
                 params: {
                     format: "json",
                     experiment_id: "2sMeAfZtKgxo",
-                    filename: () => `${subject_id.response.Q0}_p.json`
+                    filename: () => `${subnum}_p.json`
                 }
             }
         ]
     });
 
     
-    const subject_id={
-        type: jsPsychSurveyText,
-        button_label: "0次へ",
-        questions: [
-        {prompt: '学籍番号を入力してください'}
-  ]
-    }; // = jsPsych.randomization.randomID(10);
-    //const filename = `${subject_id}.json`;
+//     const subject_id={
+//         type: jsPsychSurveyText,
+//         button_label: "0次へ",
+//         questions: [
+//         {prompt: '学籍番号を入力してください'}
+//   ]
+//     }; // = jsPsych.randomization.randomID(10);
+//     //const filename = `${subject_id}.json`;
     
 
 
