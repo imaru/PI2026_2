@@ -40,7 +40,7 @@
                 params: {
                     format: "json",
                     experiment_id: "2sMeAfZtKgxo",
-                    filename: () => `${subject_id}_p.csv`
+                    filename: () => `${subject_id}_p.json`
                 }
             }
         ]
@@ -49,6 +49,7 @@
     
     const subject_id={
         type: jsPsychSurveyText,
+        button_label: "次へ",
         questions: [
         {prompt: '学籍番号を入力してください'}
   ]
