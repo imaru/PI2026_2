@@ -36,6 +36,7 @@
         extensions: [
             {
                 type: jsPsychExtensionPipe,
+                format: "json",
                 params: {
                     experiment_id: "2sMeAfZtKgxo",
                     filename: () => `${subject_id}.json`
@@ -46,7 +47,7 @@
 
     
     const subject_id = jsPsych.randomization.randomID(10);
-    const filename = `${subject_id}.json`;
+    const filename = `${subject_id}_practice.json`;
             
 
     function drawTri(c) {
