@@ -36,10 +36,10 @@
         extensions: [
             {
                 type: jsPsychExtensionPipe,
-                format: "json",
                 params: {
+                    format: "json",
                     experiment_id: "2sMeAfZtKgxo",
-                    filename: () => `${subject_id}.json`
+                    filename: () => `${subject_id}_practice.json`
                 }
             }
         ]
@@ -167,7 +167,7 @@
     var instructions = {
         type: jsPsychHtmlButtonResponse,
         stimulus: `
-        <p>(0)jsonこの実験では、表示される矢印の向きを判断してもらいます。</p>
+        <p>json2この実験では、表示される矢印の向きを判断してもらいます。</p>
         <p>矢印は画面中央の十字の左右どちらかに表示されます。</p>
         <p>十字の左側だったら左側のボタンを、十字の右側だったら右側のボタンを、</p>
         <p>できるだけ速く、でも間違えないように押してください。</p>
