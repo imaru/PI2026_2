@@ -29,13 +29,13 @@
     var wid=500;
     var hgt=100;
     /* initialize jsPsych */
-    var subnum = {
-        type: jsPsychSurveyText,
-        button_label: "1次へ",
-        questions: [
-        {prompt: '学籍番号を入力してください'}
-        ]
-    };
+    // var subnum = {
+    //     type: jsPsychSurveyText,
+    //     button_label: "1次へ",
+    //     questions: [
+    //     {prompt: '学籍番号を入力してください'}
+    //     ]
+    // };
     // var fname = subnum + '_p.json';
     var jsPsych = initJsPsych({
         override_safe_mode: true,
@@ -48,21 +48,22 @@
                 params: {
                     format: "json",
                     experiment_id: "2sMeAfZtKgxo",
-                    filename: () => `${subnum}_p.json`
+                    filename: () => `${subject_id}_p.json`
                 }
             }
         ]
     });
 
     
-//     const subject_id={
-//         type: jsPsychSurveyText,
-//         button_label: "0次へ",
-//         questions: [
-//         {prompt: '学籍番号を入力してください'}
-//   ]
-//     }; // = jsPsych.randomization.randomID(10);
-//     //const filename = `${subject_id}.json`;
+    const student_num={
+        type: jsPsychSurveyText,
+        button_label: "次へ",
+        questions: [
+        {prompt: '学籍番号を入力してください'}
+        ]
+    }
+    const subject_id = jsPsych.randomization.randomID(10);
+    // const filename = `${subject_id}.json`;
     
 
 
@@ -193,7 +194,7 @@
         post_trial_gap: 1000,
         choices: ['次へ']
     };
-    // tdimeline.push(subject_id);
+    // timeline.push(subject_id);
     timeline.push(instructions);
     timeline.push(welcome);
     var tri_conditions = [
