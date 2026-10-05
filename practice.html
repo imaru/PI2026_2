@@ -10,6 +10,7 @@
     <script src="https://unpkg.com/@jspsych/plugin-canvas-button-response@2.1.0"></script>
     <script src="https://unpkg.com/@jspsych/plugin-canvas-keyboard-response@2.1.0"></script>
     <script src="https://unpkg.com/@jspsych/plugin-image-button-response@2.1.0"></script>
+    <script src="https://unpkg.com/@jspsych/plugin-survey-text@2.1.1"></script>
     <script src="https://unpkg.com/@jspsych/extension-pipe@0.2.0"></script>
     <script src="https://unpkg.com/@jspsych/plugin-preload@2.1.0"></script>
     <link href="https://unpkg.com/jspsych@8.2.1/css/jspsych.css" rel="stylesheet" type="text/css" />
@@ -45,7 +46,13 @@
         ]
     });
 
-    
+    const student_num={
+        type: jsPsychSurveyText,
+        button_label: "次へ",
+        questions: [
+        {prompt: '学籍番号を入力してください'}
+        ]
+    }
     const subject_id = jsPsych.randomization.randomID(10);
     const filename = `${subject_id}_practice.json`;
             
@@ -177,6 +184,7 @@
         post_trial_gap: 1000,
         choices: ['次へ']
     };
+    timeline.push(student_num);
     timeline.push(instructions);
     timeline.push(welcome);
     var tri_conditions = [
