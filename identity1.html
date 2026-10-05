@@ -39,12 +39,19 @@
                 params: {
                     format: "json",
                     experiment_id: "2sMeAfZtKgxo",
-                    filename: () => `${subject_id}_i1.csv`
+                    filename: () => `${subject_id}_i1.json`
                 }
             }
         ]
     });
 
+    const student_num={
+        type: jsPsychSurveyText,
+        button_label: "次へ",
+        questions: [
+        {prompt: '学籍番号を入力してください'}
+        ]
+    }
     
     const subject_id = jsPsych.randomization.randomID(10);
     //const filename = `${subject_id}.json`;
@@ -154,6 +161,7 @@
         images: ['img/left.png', 'img/right.png']
     };
     timeline.push(preload);
+    timeline.push(student_num);
 
     /* define welcome message trial */
     var welcome = {

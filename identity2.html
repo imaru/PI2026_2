@@ -39,15 +39,21 @@
                 params: {
                     format: "json",
                     experiment_id: "2sMeAfZtKgxo",
-                    filename: () => `${subject_id}_i2.csv`
+                    filename: () => `${subject_id}_i2.json`
                 }
             }
         ]
     });
 
-    
+    const student_num={
+        type: jsPsychSurveyText,
+        button_label: "次へ",
+        questions: [
+        {prompt: '学籍番号を入力してください'}
+        ]
+    }
     const subject_id = jsPsych.randomization.randomID(10);
-    const filename = `${subject_id}.json`;
+    // const filename = `${subject_id}.json`;
             
 
     function drawTri(c) {
@@ -153,6 +159,7 @@
         type: jsPsychPreload,
         images: ['img/left.png', 'img/right.png']
     };
+    timeline.push(student_num);
     timeline.push(preload);
 
     /* define welcome message trial */
