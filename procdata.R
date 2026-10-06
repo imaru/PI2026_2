@@ -1,17 +1,25 @@
 library(jsonlite)
-library(tidyr)
+library(tidyverse)
 library(ggplot2)
+library(readr)
+library(tcltk)
+
+files <- tk_choose.files(caption = "ファイルを選択してください", multi = TRUE)
+dataframe_list <- lapply(files, read_csv)
 
 temp<-choose.files()
 pt<-choose.dir()
 
 files<-list.files(pt)
 
+temp<-file.choose()
+
 sumrt<-data.frame()
 sumhit<-data.frame()
 
 for (i in 1:length(files)){
-  dat<-jsonlite::read_json(paste0(pt,'\\',files[i]), simplifyVector = TRUE)
+  #dat<-jsonlite::read_json(paste0(pt,'\\',files[i]), simplifyVector = TRUE)
+  dat<-jsonlite::read_json(files[i], simplifyVector = TRUE)
   dat2<-dat[!is.na(dat$task),]
   datrt<-dat2[dat2$task=='response',]
   # datrt[1,]$rt<-NA
