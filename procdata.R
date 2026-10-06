@@ -14,31 +14,36 @@ files <- tk_choose.files(caption = "ファイルを選択してください", mu
 
 #temp<-file.choose()
 
-sumrt<-data.frame()
-sumhit<-data.frame()
+dat<-data.frame()
 
+c1<-grep('i1.json', files)
+c2<-grep('i2.json', files)
+c3<-grep('p.json', files)
+
+dat<-data.frame()
 for (i in 1:length(files)){
   #dat<-jsonlite::read_json(paste0(pt,'\\',files[i]), simplifyVector = TRUE)
-  dat<-jsonlite::read_json(files[i], simplifyVector = TRUE)
-  dat2<-dat[!is.na(dat$task),]
-  datrt<-dat2[dat2$task=='response',]
-  # datrt[1,]$rt<-NA
+  rawdat<-jsonlite::read_json(files[i], simplifyVector = TRUE)
   
-  sumrt[i,1]<-datrt[1,]$condition
-  sumhit[i,1]<-datrt[1,]$condition
-  sumrt[i,2]<-mean(datrt[datrt$cond==0 & datrt$correct,]$rt, na.rm=T)
-  sumhit[i,2]<-length(datrt[datrt$cond==0 & datrt$correct,]$rt)/20
-  sumrt[i,3]<-mean(datrt[datrt$cond==1 & datrt$correct,]$rt, na.rm=T)
-  sumhit[i,3]<-length(datrt[datrt$cond==1 & datrt$correct,]$rt)/20
+  dat2<-rawdat[!is.na(rawdat$task),]
+  datrt<-dat2[dat2$task=='response',]
+  dat[i,1]<-rawdat[rawdat$trial_type=='survey-text',]$response[[1]]$Q0
+  dat[i,2]<-datrt[1,]$condition
+  dat[i,3]<-mean(datrt[datrt$cond==0 & datrt$correct,]$rt, na.rm=T)
+  dat[i,4]<-mean(datrt[datrt$cond==1 & datrt$correct,]$rt, na.rm=T)
+  dat[i,5]<-sum(datrt$cond==0 & datrt$correct)/sum(datrt$cond==0)
+  dat[i,6]<-sum(datrt$cond==1 & datrt$correct)/sum(datrt$cond==1)
+  
 }
-colnames(sumrt)<-c('condition','rt.consistent','rt.inconsistent')
-colnames(sumhit)<-c('condition','hit.consistent','hit.inconsistent')
+colnames(dat)<-c('gakuseki','session','rt_consistent','rt_inconsistent','hr_consistent','hr_inconsistent')
 
-lrt<-pivot_longer(sumrt,cols=c('rt.consistent','rt.inconsistent'), names_prefix = 'rt.', values_to = 'rt')
-lhit<-pivot_longer(sumhit,cols=c('hit.consistent','hit.inconsistent'), names_prefix = 'hit.', values_to = 'hit')
 
-grt<-ggplot(data=lrt, aes(x=condition, y=rt, color=name))+geom_boxplot()+geom_jitter(width=0.1, height=0)
+ldat<-pivot_longer(dat,cols=c('rt_consistent','rt_inconsistent','hr_consistent','hr_inconsistent'), names_to=c(".value","condition"),names_sep = "_")
+
+ldldat<-pivot_longer(dat,cols=c('rt.consistent','rt.inconsistent','hr.consistent','hr.inconsistent'), names_prefix = c('rt.','hr.'), values_to = c('rt','hr'))
+
+grt<-ggplot(data=ldat, aes(x=session, y=rt, color=condition))+geom_boxplot()+geom_jitter(width=0.1, height=0)
 plot(grt)
 
-ghit<-ggplot(data=lhit, aes(x=condition, y=hit, color=name))+geom_boxplot()+geom_jitter(width=0.1, height=0)
+ghit<-ggplot(data=ldat, aes(x=session, y=hr, color=condition))+geom_boxplot()+geom_jitter(width=0.1, height=0)
 plot(ghit)
