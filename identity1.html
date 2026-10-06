@@ -40,7 +40,9 @@
                 params: {
                     format: "json",
                     experiment_id: "2sMeAfZtKgxo",
-                    filename: () => `${subject_id}_i1.json`
+                    filename: () => `${subject_id}_i1.json`,
+                    wait_message: "ウィンドウを閉じずにそのまま待ってください",
+                    done_messege: "この条件は終了です。ウィンドウかタブを閉じてください。"
                 }
             }
         ]
@@ -264,7 +266,7 @@
     var test_procedure = {
         timeline: [fixation2, cvstest],
         timeline_variables: tri_conditions,
-        repetitions: 10,
+        repetitions: 2,
         randomize_order: true
     };
     timeline.push(test_procedure);
@@ -287,7 +289,7 @@
           <p>A条件の反応時間は ${c_rt}msでした</p>
           <p>B条件の正答率は ${ic_accuracy}% でした</p>
           <p>B条件の反応時間は ${ic_rt}msでした</p>
-          <p>上の4つの数値をメモしてから、次へを押してください。結果を入力するためのリンクが表示されます。</p>`;
+          <p>上の4つの数値をメモしてから、次へを押してください。</p>`;
 
         },
         choices: ['次へ']
@@ -296,7 +298,7 @@
     // timeline.push(save_data);
     var inputdata = {
         type: jsPsychHtmlButtonResponse,
-        stimulus: `<p>こちらの<a href='https://kanazawait.qualtrics.com/jfe/form/SV_aY7oAs1toZTL7ro'>リンク先</a>から
+        stimulus: `<p>こちらの<a href='https://kanazawait.qualtrics.com/jfe/form/SV_0iFaKNEALsoMtkq'>リンク先</a>から
         結果を入力してください。今回の条件は<b>「向き条件1回目」</b>です。</p>
         <p>入力できたらこの実験は終了です。ご協力ありがとうございました。</p>`,
         choices: ['終了']

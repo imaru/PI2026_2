@@ -40,7 +40,9 @@
                 params: {
                     format: "json",
                     experiment_id: "2sMeAfZtKgxo",
-                    filename: () => `${subject_id}_i2.json`
+                    filename: () => `${subject_id}_i1.json`,
+                    wait_message: "ウィンドウを閉じずにそのまま待ってください",
+                    done_messege: "実験は終了です。お疲れさまでした。ウィンドウかタブを閉じてください。"
                 }
             }
         ]
@@ -263,7 +265,7 @@
     var test_procedure = {
         timeline: [fixation2, cvstest],
         timeline_variables: tri_conditions,
-        repetitions: 10,
+        repetitions: 2,
         randomize_order: true
     };
     timeline.push(test_procedure);
@@ -295,12 +297,12 @@
     // timeline.push(save_data);
     var inputdata = {
         type: jsPsychHtmlButtonResponse,
-        stimulus: `<p>こちらの<a href='https://kanazawait.qualtrics.com/jfe/form/SV_aY7oAs1toZTL7ro'>リンク先</a>から
-        結果を入力してください。今回の条件は<b>「向き条件2回目」</b>です。</p>
-        <p>入力できたらこの実験は終了です。ご協力ありがとうございました。</p>`,
-        choices: ['終了']
+        stimulus: `<p>こちらの<a href='https://kanazawait.qualtrics.com/jfe/form/SV_aY7oAs1toZTL7ro' target='_blank'>リンク先</a>から
+        結果を入力してください。
+        <p>入力できたらこの画面に戻って「次へ」ボタンを押してください。</p>`,
+        choices: ['次へ']
     };
-    // timeline.push(inputdata);
+    timeline.push(inputdata);
 
     /* start the experiment */
     jsPsych.data.addProperties({condition: 'identity2'});

@@ -48,7 +48,9 @@
                 params: {
                     format: "json",
                     experiment_id: "2sMeAfZtKgxo",
-                    filename: () => `${subject_id}_p.json`
+                    filename: () => `${subject_id}_i1.json`,
+                    wait_message: "ウィンドウを閉じずにそのまま待ってください",
+                    done_messege: "この条件は終了です。ウィンドウかタブを閉じてください。"
                 }
             }
         ]
@@ -275,7 +277,7 @@
         timeline: [fixation2, cvstest],
         timeline_variables: tri_conditions,
         // repetitions: 10,
-        repetitions: 10,
+        repetitions: 2,
         randomize_order: true
     };
     timeline.push(test_procedure);
@@ -298,7 +300,7 @@
           <p>A条件の反応時間は ${c_rt}msでした</p>
           <p>B条件の正答率は ${ic_accuracy}% でした</p>
           <p>B条件の反応時間は ${ic_rt}msでした</p>
-          <p>上の4つの数値をメモしてから、次へを押してください。結果を入力するためのリンクが表示されます。</p>`;
+          <p>上の4つの数値をメモしてから、次へを押してください。</p>`;
 
         },
         choices: ['次へ']
