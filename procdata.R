@@ -5,14 +5,14 @@ library(readr)
 library(tcltk)
 
 files <- tk_choose.files(caption = "ファイルを選択してください", multi = TRUE)
-dataframe_list <- lapply(files, read_csv)
+#dataframe_list <- lapply(files, read_csv)
 
-temp<-choose.files()
-pt<-choose.dir()
+#temp<-choose.files()
+#pt<-choose.dir()
 
-files<-list.files(pt)
+#files<-list.files(pt)
 
-temp<-file.choose()
+#temp<-file.choose()
 
 sumrt<-data.frame()
 sumhit<-data.frame()
