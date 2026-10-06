@@ -5,14 +5,6 @@ library(readr)
 library(tcltk)
 
 files <- tk_choose.files(caption = "ファイルを選択してください", multi = TRUE)
-#dataframe_list <- lapply(files, read_csv)
-
-#temp<-choose.files()
-#pt<-choose.dir()
-
-#files<-list.files(pt)
-
-#temp<-file.choose()
 
 dat<-data.frame()
 
@@ -47,3 +39,10 @@ plot(grt)
 
 ghit<-ggplot(data=ldat, aes(x=session, y=hr, color=condition))+geom_boxplot()+geom_jitter(width=0.1, height=0)
 plot(ghit)
+
+ldatrt<-ldat[,1:4]
+ldathr<-ldat[,c(1,2,3,5)]
+
+source('./anovakun_489.txt')
+anovakun(ldatrt, 'sAB', 3, 2, long=T)
+anovakun(ldathr, 'sAB', 3, 2, long=T)
