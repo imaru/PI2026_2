@@ -32,12 +32,12 @@ colnames(dat)<-c('gakuseki','session','rt_consistent','rt_inconsistent','hr_cons
 
 ldat<-pivot_longer(dat,cols=c('rt_consistent','rt_inconsistent','hr_consistent','hr_inconsistent'), names_to=c(".value","condition"),names_sep = "_")
 
-ldldat<-pivot_longer(dat,cols=c('rt.consistent','rt.inconsistent','hr.consistent','hr.inconsistent'), names_prefix = c('rt.','hr.'), values_to = c('rt','hr'))
-
-grt<-ggplot(data=ldat, aes(x=session, y=rt, color=condition))+geom_boxplot()+geom_jitter(width=0.1, height=0)
+grt<-ggplot(data=ldat, aes(x=session, y=rt, color=condition, fill=condition))+geom_boxplot()+geom_jitter(width=0.1, height=0)
+grt<-grt+stat_summary(fun=mean, geom='point', color='white', position=position_dodge(width=0.7), size=2)
 plot(grt)
 
-ghit<-ggplot(data=ldat, aes(x=session, y=hr, color=condition))+geom_boxplot()+geom_jitter(width=0.1, height=0)
+ghit<-ggplot(data=ldat, aes(x=session, y=hr, color=condition, fill=condition))+geom_boxplot()+geom_jitter(width=0.1, height=0)
+ghit<-ghit+stat_summary(fun=mean, geom='point', color='white', position=position_dodge(width=0.9), size=2)
 plot(ghit)
 
 ldatrt<-ldat[,1:4]
