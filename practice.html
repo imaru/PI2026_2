@@ -34,16 +34,16 @@
         //on_finish: function () {
         //    jsPsych.data.displayData();
         //}
-        extensions: [
-            {
-                type: jsPsychExtensionPipe,
-                params: {
-                    format: "json",
-                    experiment_id: "2sMeAfZtKgxo",
-                    filename: () => `${subject_id}_practice.json`
-                }
-            }
-        ]
+        // extensions: [
+        //     {
+        //         type: jsPsychExtensionPipe,
+        //         params: {
+        //             format: "json",
+        //             experiment_id: "2sMeAfZtKgxo",
+        //             filename: () => `${subject_id}_practice.json`
+        //         }
+        //     }
+        // ]
     });
 
     const student_num={
@@ -297,7 +297,7 @@
         stimulus: `<p>練習はこれで終わりです</p>`,
         choices: ['終了']
     };
-    //timeline.push(inputdata);
+    timeline.push(inputdata);
 
     /* start the experiment */
     jsPsych.data.addProperties({condition: 'position'});
