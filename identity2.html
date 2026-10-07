@@ -40,7 +40,7 @@
                 params: {
                     format: "json",
                     experiment_id: "2sMeAfZtKgxo",
-                    filename: () => `${subject_id}_i1.json`,
+                    filename: () => `${subject_id}_i2.json`,
                     wait_message: "ウィンドウを閉じずにそのまま待ってください",
                     done_message: "実験は終了です。お疲れさまでした。ウィンドウかタブを閉じてください。"
                 }
@@ -265,7 +265,7 @@
     var test_procedure = {
         timeline: [fixation2, cvstest],
         timeline_variables: tri_conditions,
-        repetitions: 2,
+        repetitions: 10,
         randomize_order: true
     };
     timeline.push(test_procedure);
